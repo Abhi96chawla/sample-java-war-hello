@@ -5,7 +5,9 @@ WORKDIR /usr/local/tomcat/
 
 COPY pom.xml .
 # Build the Maven project
-RUN mvn package
+RUN apt-get update && \
+    apt-get install -y maven && \
+    mvn clean package
 
 COPY . .
 
